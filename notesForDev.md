@@ -1,5 +1,5 @@
 ### Notes for what certain things mean
-**File:***TodoList.js*:
+**File:** *TodoList.js*:
 ```
 let handleSubmit = (event) => {
     event.preventDefault()
@@ -8,7 +8,7 @@ let handleSubmit = (event) => {
 ```
 This is done in order to prevent the page refresh which is native to the form "submit" button. If the page were to refresh, then what the user inputted would appear momentarily and then disappear as the page refreshed. Refer to [this article](https://www.robinwieruch.de/react-preventdefault) for more information.
 
-**File:***TodoList.js*
+**File:** *TodoList.js*
 ```
 let handleChange = (input) => {
     setLatestTodo(input.target.value)
