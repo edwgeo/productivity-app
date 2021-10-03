@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import TodoList from './components/TodoList';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
