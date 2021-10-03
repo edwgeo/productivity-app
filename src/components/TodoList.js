@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Todo from './Todo'
 
-function TodoList () {
-    const [todos, setTodos] = useState([])
-    const [latestTodo, setLatestTodo] = useState({name: "", desc: "", time: "", status: "todo"})
+ function TodoList () {
+     const [todos, setTodos] = useState([])
+     const [latestTodo, setLatestTodo] = useState({name: "", desc: "", time: "", status: "todo"})
 
     let handleChange = (event) => {
         const value = event.target.value;
@@ -47,7 +47,16 @@ function TodoList () {
             <ul>
             {todos.map((todo, index) =>
                 <li key={index}>
-                    <Todo {...todo} />
+                    <Todo {...todo}/>
+                    <form>
+                        <select name="status" value={todo.status}>
+                            <option value="todo">To do</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </form>
+                    {/* show the status of the todo here, and have an onSubmit handler 
+                        Also make it so that there's multiple sections and based on status they're displayed in each section */}
                 </li>
             )}
             </ul>
