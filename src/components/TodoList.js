@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import Todo from './Todo'
 
  function TodoList () {
-     const [todos, setTodos] = useState([])
-     const [latestTodo, setLatestTodo] = useState({name: "", desc: "", time: "", status: "todo"})
+    // push new changes to develop branch
+    const [todos, setTodos] = useState([])
+    const [latestTodo, setLatestTodo] = useState({key: Date.now(), name: "", desc: "", time: "", status: "todo"})
 
     let handleChange = (event) => {
         const value = event.target.value;
@@ -12,10 +13,26 @@ import Todo from './Todo'
             [event.target.name]: value,
         });
     }
+    let handleStatusChange = (key, event) => {
+        setTodos(todos.map(object => {
+            if (object.key === key) {
+                return {
+                    ...object,
+                    status: event.target.value
+                }
+                object.status = event.target.value
+            }
+            else {
+                return object
+            }
+        }))
+        
+    }
     let handleSubmit = (event) => {
         event.preventDefault() // without, the page refreshes and no data gets printed
         setTodos(todos.concat(latestTodo))
-        setLatestTodo({name: "", desc: "", time: "", status: "todo"})
+        console.log(todos)
+        setLatestTodo({key: Date.now(), name: "", desc: "", time: "", status: "todo"})
     }
     console.log(latestTodo)
     return (
@@ -45,18 +62,16 @@ import Todo from './Todo'
                 />
             </form>
             <ul>
-            {todos.map((todo, index) =>
-                <li key={index}>
+            {todos.map((todo) =>
+                <li key={todo.key}>
                     <Todo {...todo}/>
                     <form>
-                        <select name="status" value={todo.status}>
+                        <select name="status" value={todo.status} onChange={(e) => handleStatusChange(todo.key, e)}>
                             <option value="todo">To do</option>
                             <option value="inProgress">In Progress</option>
                             <option value="done">Done</option>
                         </select>
                     </form>
-                    {/* show the status of the todo here, and have an onSubmit handler 
-                        Also make it so that there's multiple sections and based on status they're displayed in each section */}
                 </li>
             )}
             </ul>
