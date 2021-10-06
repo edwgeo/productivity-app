@@ -20,13 +20,11 @@ import Todo from './Todo'
                     ...object,
                     status: event.target.value
                 }
-                object.status = event.target.value
             }
             else {
                 return object
             }
         }))
-        
     }
     let handleSubmit = (event) => {
         event.preventDefault() // without, the page refreshes and no data gets printed
@@ -34,6 +32,27 @@ import Todo from './Todo'
         console.log(todos)
         setLatestTodo({key: Date.now(), name: "", desc: "", time: "", status: "todo"})
     }
+    
+    function ShowTodoItemsX (props) {
+        return (
+            <ul>
+            {/* Multiple sections for each status, each of which use the .filter to display only the items with that status */}
+            {props.todos.map((todo) =>
+                <li key={todo.key}>
+                    <Todo {...todo}/>
+                    <form>
+                        <select name="status" value={todo.status} onChange={(e) => handleStatusChange(todo.key, e)}>
+                            <option value="todo">To do</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </form>
+                </li>
+            )}
+            </ul>
+        )
+    }
+    
     console.log(latestTodo)
     return (
         <div>
@@ -61,20 +80,12 @@ import Todo from './Todo'
                     value="submit"
                 />
             </form>
-            <ul>
-            {todos.map((todo) =>
-                <li key={todo.key}>
-                    <Todo {...todo}/>
-                    <form>
-                        <select name="status" value={todo.status} onChange={(e) => handleStatusChange(todo.key, e)}>
-                            <option value="todo">To do</option>
-                            <option value="inProgress">In Progress</option>
-                            <option value="done">Done</option>
-                        </select>
-                    </form>
-                </li>
-            )}
-            </ul>
+            <h3>Todo</h3>
+            <ShowTodoItemsX todos={todos.filter(todo => todo.status === "todo")} />
+            <h3>In Progress</h3>
+            <ShowTodoItemsX todos={todos.filter(todo => todo.status === "inProgress")} />
+            <h3>Done</h3>
+            <ShowTodoItemsX todos={todos.filter(todo => todo.status === "done")} />
         </div>
     )
 }
