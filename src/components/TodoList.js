@@ -52,7 +52,7 @@ import Todo from './Todo'
             </ul>
         )
     }
-    
+
     console.log(latestTodo)
     return (
         <div>
@@ -86,6 +86,9 @@ import Todo from './Todo'
             <ShowTodoItemsX todos={todos.filter(todo => todo.status === "inProgress")} />
             <h3>Done</h3>
             <ShowTodoItemsX todos={todos.filter(todo => todo.status === "done")} />
+            {/* next steps - validation for the different fields (i.e. make sure that the time field is an int) 
+                           - change the name of TodoList to something else and the name of ShowTodoItemsX too */}
+
         </div>
     )
 }

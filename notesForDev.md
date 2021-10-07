@@ -50,4 +50,10 @@ let handleStatusChange = (key, event) => {
 ```
 handleStatusChange handles the case where a user wants to adjust a task's status. We need to use the setTodos to change the status of the todo item. To accomplish that, within todos.map we define an arrow function that identifies the correct todo item and returns a duplicate with just the status changed.
 I struggled with this for a while, but [this StackOverflow answer](https://stackoverflow.com/questions/49477547/setstate-of-an-array-of-objects-in-react) made me realize that .map returns some modified version of an array based on the function we pass into it (which it calls on each member of the array). Check out [.map's documentation](https://reactjs.org/docs/lists-and-keys.html) for more.
+
+**File:** *TodoList.js* (Oct 6, 2021)
+```
+WIP
+
+```
  
