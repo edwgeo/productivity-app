@@ -1,11 +1,11 @@
 // import './App.css';
-import TodoList from './components/TodoList';
+import TodoDashboard from './components/TodoDashboard';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <TodoList />
+      <TodoDashboard />
     </div>
   );
 }
