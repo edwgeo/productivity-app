@@ -95,4 +95,4 @@ Also, an example of the html for displaying the errors is shown below (right bel
     <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div>
 </div>
 ```
-P.S. It's interesting the way that this is styled - I saw it in a Youtube video, but didn't know that div's could be styled like this in jsx
+P.S. It's interesting the way that this is styled - I saw it in a Youtube video, but didn't know that div's could be styled like this in jsx. [This article](https://dev.to/ceceliacreates/inline-styling-with-jsx-20k0) talks more about that.
