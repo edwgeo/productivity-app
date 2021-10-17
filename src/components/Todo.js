@@ -8,7 +8,7 @@ function Todo (props) {
     // want to have a form where we can change the status
     // this should get a method from the TodoList component that adjusts the states of the current todos
     return (
-        <div>{todoName}, {description}, {time}, {status}</div>
+        <div>{todoName}, {description}, {time}</div>
     )
 
 }
