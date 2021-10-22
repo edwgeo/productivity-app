@@ -1,4 +1,5 @@
 import react, { useState } from 'react'
+import { NormalInput, FormContainer } from './StyledComponents'
 
 function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     const [errors, setErrors] = useState({titleError : "", timeError : ""})
@@ -40,39 +41,42 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     }
 
     return (
+        
         <form onSubmit={handleSubmit}>
-            <div>
+            <FormContainer>
+                <div>
+                    <NormalInput
+                        placeholder="Wash the dishes..."
+                        value={latestTodo.name}
+                        onChange={handleChange}
+                        name="name"
+                    />
+                    <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div>
+                </div>
+                <div>
+                    <input
+                        placeholder="Make sure to scrub them with the new sponge!"
+                        value={latestTodo.desc}
+                        onChange={handleChange}
+                        name="desc"
+                    />
+                </div>
+                <div>
+                    <input
+                        placeholder="45 minutes"
+                        value={latestTodo.time}
+                        onChange={handleChange}
+                        name="time"
+                    />
+                    <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div>
+                </div>
+                <div>
                 <input
-                    placeholder="Wash the dishes..."
-                    value={latestTodo.name}
-                    onChange={handleChange}
-                    name="name"
+                    type="submit"
+                    value="submit"
                 />
-                <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div>
-            </div>
-            <div>
-                <input
-                    placeholder="Make sure to scrub them with the new sponge!"
-                    value={latestTodo.desc}
-                    onChange={handleChange}
-                    name="desc"
-                />
-            </div>
-            <div>
-                <input
-                    placeholder="45 minutes"
-                    value={latestTodo.time}
-                    onChange={handleChange}
-                    name="time"
-                />
-                <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div>
-            </div>
-            <div>
-            <input
-                type="submit"
-                value="submit"
-            />
-            </div>
+                </div>
+            </FormContainer>
         </form>
     )
 }
