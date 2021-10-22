@@ -1,5 +1,5 @@
 import react, { useState } from 'react'
-import { NormalInput, FormContainer } from './StyledComponents'
+import { NormalInput, FormContainer, InputInRow } from './StyledComponents'
 
 function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     const [errors, setErrors] = useState({titleError : "", timeError : ""})
@@ -44,17 +44,28 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
         
         <form onSubmit={handleSubmit}>
             <FormContainer>
+                <InputInRow>
+                    <div>
+                        <NormalInput
+                            placeholder="Wash the dishes..."
+                            value={latestTodo.name}
+                            onChange={handleChange}
+                            name="name"
+                        />
+                        <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div>
+                    </div>
+                    <div>
+                        <NormalInput
+                            placeholder="45 minutes"
+                            value={latestTodo.time}
+                            onChange={handleChange}
+                            name="time"
+                        />
+                        <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div>
+                    </div>
+                </InputInRow>
                 <div>
                     <NormalInput
-                        placeholder="Wash the dishes..."
-                        value={latestTodo.name}
-                        onChange={handleChange}
-                        name="name"
-                    />
-                    <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div>
-                </div>
-                <div>
-                    <input
                         placeholder="Make sure to scrub them with the new sponge!"
                         value={latestTodo.desc}
                         onChange={handleChange}
@@ -62,21 +73,13 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
                     />
                 </div>
                 <div>
-                    <input
-                        placeholder="45 minutes"
-                        value={latestTodo.time}
-                        onChange={handleChange}
-                        name="time"
-                    />
-                    <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div>
-                </div>
-                <div>
-                <input
+                <NormalInput
                     type="submit"
                     value="submit"
                 />
                 </div>
             </FormContainer>
+            
         </form>
     )
 }
