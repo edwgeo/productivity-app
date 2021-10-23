@@ -1,5 +1,5 @@
 import react, { useState } from 'react'
-import { NormalInput, FormContainer, InputInRow } from './StyledComponents'
+import { NormalInput, FormContainer, InputInRow, SubmitInput, TextArea } from './StyledComponents'
 
 function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     const [errors, setErrors] = useState({titleError : "", timeError : ""})
@@ -9,7 +9,7 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
         let newTimeError = ""
 
         if (!todoItem.name) {
-            newTitleError = "Must input some title for the todo item"
+            newTitleError = "Must input a title for the todo item"
         }
         if (todoItem.time.trim() === "" || isNaN(todoItem.time)) {
             newTimeError = "Time field must contain only integers"
@@ -47,7 +47,7 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
                 <InputInRow>
                     <div>
                         <NormalInput
-                            placeholder="Wash the dishes..."
+                            placeholder="I want to..."
                             value={latestTodo.name}
                             onChange={handleChange}
                             name="name"
@@ -64,20 +64,22 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
                         <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div>
                     </div>
                 </InputInRow>
-                <div>
-                    <NormalInput
-                        placeholder="Make sure to scrub them with the new sponge!"
-                        value={latestTodo.desc}
-                        onChange={handleChange}
-                        name="desc"
+                <InputInRow>
+                    <div>
+                        <TextArea
+                            placeholder="Add a description"
+                            value={latestTodo.desc}
+                            onChange={handleChange}
+                            name="desc"
+                        />
+                    </div>
+                </InputInRow>
+                <InputInRow>
+                    <SubmitInput
+                        type="submit"
+                        value="Submit"
                     />
-                </div>
-                <div>
-                <NormalInput
-                    type="submit"
-                    value="submit"
-                />
-                </div>
+                </InputInRow>
             </FormContainer>
             
         </form>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import TodoSection from './TodoSection'
 import Todoform from './Todoform'
+import { StyledHeading } from './StyledComponents'
 
 // currently: working on creating Todoform, passing in the handleChange, handleSubmit functions, and displaying the <form>
 
@@ -26,6 +27,7 @@ import Todoform from './Todoform'
 
     return (
         <div>
+            <StyledHeading>Add your tasks!</StyledHeading>
             <Todoform latestTodo={latestTodo} setTodos={setTodos} setLatestTodo={setLatestTodo} />
             <h3>Todo</h3>
             <TodoSection todos={todos.filter(todo => todo.status === "todo")} handleStatusChange={handleStatusChange}/>
