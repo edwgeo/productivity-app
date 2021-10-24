@@ -1,6 +1,6 @@
 import react, { useState } from 'react'
 import { NormalInput, FormContainer, InputInRow, SubmitInput, TextArea } from './StyledComponents'
-import { Button, TextField, Grid, Container } from '@mui/material';
+import { Button, TextField, Grid, Container, Item } from '@mui/material';
 
 function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     const [errors, setErrors] = useState({titleError : "", timeError : ""})
@@ -42,41 +42,40 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     }
 
     return (
+        <>
         <Container maxWidth="sm">
             <form onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                    <Grid item m={4}>
-                        <div>
+                <Grid container spacing={2} alignItems="center" justifyContent="center">
+                    <Grid item md={8}>
                         <TextField
                             placeholder="I want to..."
                             value={latestTodo.name}
                             onChange={handleChange}
                             name="name"
                             variant="outlined"
+                            fullWidth
                         />
                         {/* <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div> */}
-                        </div>
                     </Grid>
-                    <Grid item m={4}>
-                        <div>
+                    <Grid item md={4}>
                         <TextField
                             placeholder="45 minutes"
                             value={latestTodo.time}
                             onChange={handleChange}
                             name="time"
+                            fullWidth
                         />
                         {/* <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div> */}
-                        </div>
                     </Grid>
-                    <Grid item>
+                    <Grid item md={12}>
                         <TextField
                             multiline
-                            fullwidth
                             rows={2}
                             placeholder="Add a description"
                             value={latestTodo.desc}
                             onChange={handleChange}
                             name="desc"
+                            fullWidth
                         />
                     </Grid>
                     <Grid item>
@@ -85,6 +84,7 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
                 </Grid>
             </form>
         </Container>
+      </>
     )
 }
 
