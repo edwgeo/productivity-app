@@ -81,7 +81,6 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
                     />
                 </InputInRow>
             </FormContainer>
-            
         </form>
     )
 }
