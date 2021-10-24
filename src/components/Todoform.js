@@ -1,5 +1,6 @@
 import react, { useState } from 'react'
 import { NormalInput, FormContainer, InputInRow, SubmitInput, TextArea } from './StyledComponents'
+import { Button, TextField, Grid, Container } from '@mui/material';
 
 function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     const [errors, setErrors] = useState({titleError : "", timeError : ""})
@@ -41,47 +42,49 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
     }
 
     return (
-        
-        <form onSubmit={handleSubmit}>
-            <FormContainer>
-                <InputInRow>
-                    <div>
-                        <NormalInput
+        <Container maxWidth="sm">
+            <form onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                    <Grid item m={4}>
+                        <div>
+                        <TextField
                             placeholder="I want to..."
                             value={latestTodo.name}
                             onChange={handleChange}
                             name="name"
+                            variant="outlined"
                         />
-                        <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div>
-                    </div>
-                    <div>
-                        <NormalInput
+                        {/* <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div> */}
+                        </div>
+                    </Grid>
+                    <Grid item m={4}>
+                        <div>
+                        <TextField
                             placeholder="45 minutes"
                             value={latestTodo.time}
                             onChange={handleChange}
                             name="time"
                         />
-                        <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div>
-                    </div>
-                </InputInRow>
-                <InputInRow>
-                    <div>
-                        <TextArea
+                        {/* <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div> */}
+                        </div>
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            multiline
+                            fullwidth
+                            rows={2}
                             placeholder="Add a description"
                             value={latestTodo.desc}
                             onChange={handleChange}
                             name="desc"
                         />
-                    </div>
-                </InputInRow>
-                <InputInRow>
-                    <SubmitInput
-                        type="submit"
-                        value="Submit"
-                    />
-                </InputInRow>
-            </FormContainer>
-        </form>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="outlined" type="submit">Submit</Button>
+                    </Grid>
+                </Grid>
+            </form>
+        </Container>
     )
 }
 
