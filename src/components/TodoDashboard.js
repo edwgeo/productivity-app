@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import TodoSection from './TodoSection'
 import Todoform from './Todoform'
-import { StyledHeading } from './StyledComponents'
-
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material'
 // currently: working on creating Todoform, passing in the handleChange, handleSubmit functions, and displaying the <form>
 
  function TodoDashboard () {
@@ -27,15 +26,41 @@ import { StyledHeading } from './StyledComponents'
 
     return (
         <div>
-            <StyledHeading>Add your tasks!</StyledHeading>
+            <Typography align="center" variant="h2">Add your tasks!</Typography>
             <Todoform latestTodo={latestTodo} setTodos={setTodos} setLatestTodo={setLatestTodo} />
-            <h3>Todo</h3>
-            <TodoSection todos={todos.filter(todo => todo.status === "todo")} handleStatusChange={handleStatusChange}/>
-            <h3>In Progress</h3>
-            <TodoSection todos={todos.filter(todo => todo.status === "inProgress")} handleStatusChange={handleStatusChange}/>
-            <h3>Done</h3>
-            <TodoSection todos={todos.filter(todo => todo.status === "done")} handleStatusChange={handleStatusChange}/>
-
+            <Accordion>
+                <AccordionSummary
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography variant="h4">To Do</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <TodoSection todos={todos.filter(todo => todo.status === "todo")} handleStatusChange={handleStatusChange}/>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography variant="h4">Progress</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <TodoSection todos={todos.filter(todo => todo.status === "inProgress")} handleStatusChange={handleStatusChange}/>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography variant="h4">Done</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <TodoSection todos={todos.filter(todo => todo.status === "done")} handleStatusChange={handleStatusChange}/>
+                </AccordionDetails>
+            </Accordion>
         </div>
     )
 }
