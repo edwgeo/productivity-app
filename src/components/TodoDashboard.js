@@ -26,14 +26,14 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/
 
     return (
         <div>
-            <Typography align="center" variant="h2">Add your tasks!</Typography>
+            <Typography align="center" variant="h3">Add your tasks!</Typography>
             <Todoform latestTodo={latestTodo} setTodos={setTodos} setLatestTodo={setLatestTodo} />
             <Accordion>
                 <AccordionSummary
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography variant="h4">To Do</Typography>
+                    <Typography variant="h5">To Do</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <TodoSection todos={todos.filter(todo => todo.status === "todo")} handleStatusChange={handleStatusChange}/>
@@ -44,7 +44,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography variant="h4">Progress</Typography>
+                    <Typography variant="h5">Progress</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <TodoSection todos={todos.filter(todo => todo.status === "inProgress")} handleStatusChange={handleStatusChange}/>
@@ -55,7 +55,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography variant="h4">Done</Typography>
+                    <Typography variant="h5">Done</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <TodoSection todos={todos.filter(todo => todo.status === "done")} handleStatusChange={handleStatusChange}/>
