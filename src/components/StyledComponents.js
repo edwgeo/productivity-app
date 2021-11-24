@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { List } from '@mui/material'
+import { List, FormControl } from '@mui/material'
 
 // border-box documentation: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 export const NormalInput = styled.input`
@@ -61,10 +61,24 @@ export const StyledHeading = styled.div`
 `
 
 export const StyledList = styled(List)`
-  display:flex;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+`
+
+export const StyledTextWrapper = styled.div`
+    padding: 20px 0 10px 10px;
+    margin-right: auto;
 `
 
 export const StyledTodoContainer = styled.div`
+    display:flex;
+    flex-direction: row;
+    border: 2px solid skyblue;
+    border-radius: 8px;
+    margin-bottom: 10px;
+`
+
+export const StyledFormControl = styled(FormControl)`
     padding: 10px;
 `
