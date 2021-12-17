@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { List, FormControl } from '@mui/material'
+import { List, FormControl, Accordion } from '@mui/material'
 
 // border-box documentation: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 export const NormalInput = styled.input`
@@ -63,7 +63,6 @@ export const StyledHeading = styled.div`
 export const StyledList = styled(List)`
   display: flex;
   flex-direction: column;
-  width: 400px;
 `
 
 export const StyledTextWrapper = styled.div`
@@ -81,4 +80,10 @@ export const StyledTodoContainer = styled.div`
 
 export const StyledFormControl = styled(FormControl)`
     padding: 10px;
+`
+// create some container that will hold the accordions (todo, in prog, compl) and style them so that they all look decent
+export const StyledAccordionsContainer = styled.div`
+    padding: 10px;
+    width: 500px;
+    margin: auto;
 `
