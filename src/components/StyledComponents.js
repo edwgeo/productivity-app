@@ -67,13 +67,14 @@ export const StyledList = styled(List)`
 
 export const StyledTextWrapper = styled.div`
     padding: 20px 0 10px 10px;
-    margin-right: auto;
+    margin-right: auto; 
 `
 
 export const StyledTodoContainer = styled.div`
     display:flex;
     flex-direction: row;
-    border: 2px solid skyblue;
+    border: 1px solid gray;
+    background-color: #e0e0e0;
     border-radius: 8px;
     margin-bottom: 10px;
 `
@@ -83,7 +84,11 @@ export const StyledFormControl = styled(FormControl)`
 `
 // create some container that will hold the accordions (todo, in prog, compl) and style them so that they all look decent
 export const StyledAccordionsContainer = styled.div`
-    padding: 10px;
-    width: 500px;
+    padding: 20px;
+    width: 40%;
     margin: auto;
+`
+
+export const StyledAccordion = styled(Accordion)`
+    border: 1px solid #9575cd;
 `

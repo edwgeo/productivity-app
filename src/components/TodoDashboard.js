@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import TodoSection from './TodoSection'
 import Todoform from './Todoform'
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material'
-import { StyledAccordionsContainer } from './StyledComponents'
+import { StyledAccordion, StyledAccordionsContainer } from './StyledComponents'
 
  function TodoDashboard () {
     const [todos, setTodos] = useState([])
@@ -29,7 +29,7 @@ import { StyledAccordionsContainer } from './StyledComponents'
             <Typography align="center" variant="h3">Add your tasks!</Typography>
             <Todoform latestTodo={latestTodo} setTodos={setTodos} setLatestTodo={setLatestTodo} />
             <StyledAccordionsContainer>
-                <Accordion>
+                <Accordion elevation = {0} defaultExpanded variant='outlined'>
                     <AccordionSummary
                         aria-controls="panel1a-content"
                         id="panel1a-header"
@@ -40,7 +40,7 @@ import { StyledAccordionsContainer } from './StyledComponents'
                         <TodoSection todos={todos.filter(todo => todo.status === "todo")} handleStatusChange={handleStatusChange}/>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion>
+                <Accordion elevation = {0} variant='outlined'>
                     <AccordionSummary
                         aria-controls="panel1a-content"
                         id="panel1a-header"
@@ -51,7 +51,7 @@ import { StyledAccordionsContainer } from './StyledComponents'
                         <TodoSection todos={todos.filter(todo => todo.status === "inProgress")} handleStatusChange={handleStatusChange}/>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion>
+                <Accordion elevation = {0} variant='outlined'>
                     <AccordionSummary
                         aria-controls="panel1a-content"
                         id="panel1a-header"

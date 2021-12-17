@@ -54,8 +54,10 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
                             name="name"
                             variant="outlined"
                             fullWidth
+                            error = {!latestTodo.name}
+                            helperText = {!latestTodo.name ? 'Have to input a title for task' : ' '}
                         />
-                        {/* <div style= {{fontSize : 11, color : "red"}}>{errors.titleError}</div> */}
+                        {/* helperText has else=" " instead of "" because otherwise, helperText changes height of textfield */}
                     </Grid>
                     <Grid item md={4}>
                         <TextField
@@ -64,8 +66,9 @@ function Todoform ({latestTodo, setTodos, setLatestTodo}) {
                             onChange={handleChange}
                             name="time"
                             fullWidth
+                            error = {latestTodo.time.match(/^[a-zA-Z]+$/)}
+                            helperText = {latestTodo.time.match(/^[a-zA-Z]+$/) ? 'Only numbers allowed' : ' '}
                         />
-                        {/* <div style= {{fontSize : 11, color : "red"}}>{errors.timeError}</div> */}
                     </Grid>
                     <Grid item md={12}>
                         <TextField
